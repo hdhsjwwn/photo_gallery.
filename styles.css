@@ -1,22 +1,73 @@
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
+    font-family: Arial, sans-serif;
 }
 
-#image {
-  width: 500px;
-  height: 300px;
-  margin: 20px auto;
-  line-height: 300px;
-  border: 2px solid black;
-  background-color: #f0f0f0;
-  background-size: cover;
-  background-position: center;
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
 }
 
-img.preview {
-  width: 100px;
-  height: 60px;
-  margin: 10px;
-  cursor: pointer;
+figure {
+    border: 2px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+figcaption {
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Tablet View (min-width: 772px) */
+@media (min-width: 772px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    figure {
+        border-radius: 50%;
+    }
+
+    .gallery figure:last-child {
+        grid-column: span 2;
+    }
+}
+
+/* Large Screen View (min-width: 992px) */
+@media (min-width: 992px) {
+    .gallery figure:nth-child(3n) {
+        grid-column: span 2;
+    }
+
+    figure {
+        border-radius: 0;
+    }
+}
+
+/* Prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Dark mode (prefers-color-scheme: dark) */
+@media (prefers-color-scheme: dark) {
+    figure {
+        background-color: #333;
+        color: #f1f1f1;
+        border-color: #000;
+    }
 }
